@@ -1,0 +1,20 @@
+.apptabs {
+    border-bottom: 0px;
+}
+
+.tab-link {
+    color: #00473e !important;
+    border: 0 !important;
+}
+
+.tab-link.active {
+    border: 0;
+    background-color: #f2f7f5 !important;
+    font-weight: bold !important;
+    color: #faae2c !important;
+    /* border-bottom: 2px solid #faae2c !important; */
+}
+
+.tab-link:hover {
+    border: 0;
+}
