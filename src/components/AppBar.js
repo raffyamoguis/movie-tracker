@@ -20,13 +20,13 @@ const AppBar = () => {
                         title="Account"
                         align='end'
                     >
-                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                        <NavDropdown.Item href="#action3">Profile</NavDropdown.Item>
                         <NavDropdown.Item href="#action4">
-                            Another action
+                            MyList
                         </NavDropdown.Item>
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="#action5">
-                            Something else here
+                            Logout
                         </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

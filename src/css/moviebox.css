@@ -1,0 +1,32 @@
+.moviebox {
+    border: 0;
+    background-color: #fffffe;
+    border-radius: 0 !important;
+}
+
+.moviebox-title {
+    margin-top: -8px;
+    font-size: 10pt;
+    text-align: center;
+    cursor: pointer;
+}
+
+.moviebox-title:hover {
+    color: #faae2c;
+}
+
+.movie-info {
+    display: flex !important;
+    margin-top: -8px;
+}
+
+.movie-info>div {
+    margin: auto;
+    font-size: 9pt;
+}
+
+.resize {
+    width: auto;
+    height: auto;
+    /* border-radius: 25px 25px 0 0; */
+}
