@@ -1,0 +1,24 @@
+.appbar {
+    /* background-color: #f2f7f5 !important; */
+}
+
+.appbar-brand {
+    font-weight: bold;
+    font-family: 'Lato', sans-serif;
+    color: #00473e;
+}
+
+.appbar-search {
+    border-radius: 25px !important;
+    border: 1px solid #fffffe;
+    background: #fffffe;
+    color: #00473e;
+}
+
+.appbar-search:focus {
+    border: 1px solid #faae2c;
+}
+
+.appbar-nav {
+    color: #00473e;
+}
