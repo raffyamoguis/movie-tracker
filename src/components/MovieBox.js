@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../css/moviebox.css'
 import error from '../img/error-img.jpg'
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 const MovieBox = ({ title, banner, year, duration, type }) => {
     const [ready, setReady] = useState(false);
@@ -26,7 +27,9 @@ const MovieBox = ({ title, banner, year, duration, type }) => {
             />
             <Card.Body>
                 <OverlayTrigger overlay={<Tooltip id="tooltip">{title}</Tooltip>}>
-                    <h6 className='moviebox-title'><b>{title.substring(0, 16)}</b></h6>
+                    <LinkContainer to={`/movie/${title}`}>
+                        <h6 className='moviebox-title'><b>{title.substring(0, 16)}</b></h6>
+                    </LinkContainer>
                 </OverlayTrigger>
                 <div className='movie-info'>
                     <div>{year}</div>
