@@ -12,7 +12,7 @@ export const useFindPath = () => {
 
 export const useRouteOnHome = () => {
     const homeRoute = [
-        "/movies", "/tvshows", "/genre", "/country",
+        "/", "/movies", "/tvshows", "/genre", "/country",
     ];
 
     return homeRoute.indexOf(useFindPath()) > -1;
