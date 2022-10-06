@@ -10,7 +10,7 @@ const buttonStyle = {
 const AppButton = ({ message, onClick }) => {
     return (
         <Button
-            className='shadow-none mt-2'
+            className='shadow-none mt-4'
             style={buttonStyle}
             onClick={(e) => onClick()}
         >
