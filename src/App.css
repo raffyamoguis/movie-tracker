@@ -4,3 +4,9 @@ body {
   background-color: #f2f7f5 !important;
   font-family: 'Inter Tight', sans-serif !important;
 }
+
+.app-button {
+  background-color: #f2f7f5 !important;
+  border: 1px solid #faae2c;
+  color: #faae2c;
+}

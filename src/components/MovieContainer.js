@@ -1,6 +1,7 @@
 import React from 'react'
-import { Row, Col, Button } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import MovieBox from './MovieBox'
+import AppButton from './AppButton';
 import axios from 'axios';
 
 const MOVIETYPE = [
@@ -17,6 +18,7 @@ const LatestTvShowApiURL = 'https://myflixer-video-api.cyclic.app/latest-tv';
 const MovieContainer = ({ title, movietype }) => {
     const [moviesdata, setMoviesData] = React.useState([]);
     const [tempMovie, setTempMovie] = React.useState([]);
+    const [showMore, setShowMore] = React.useState(true);
 
     React.useEffect(() => {
         async function fetchData() {
@@ -36,7 +38,6 @@ const MovieContainer = ({ title, movietype }) => {
         try {
             axios.get(apiurl)
                 .then(function (response) {
-                    // setMoviesData(response.data);
                     trimMovies(response.data);
                 });
         } catch (error) {
@@ -51,8 +52,18 @@ const MovieContainer = ({ title, movietype }) => {
     }
 
     const handleclick = () => {
-        setMoviesData(tempMovie);
+        setShowMore(!showMore);
+
+        if (showMore) {
+            setMoviesData(tempMovie);
+            return;
+        }
+
+        let tempData = tempMovie;
+        setMoviesData(tempData.slice(0, 16));
     }
+
+
 
     return (
         <>
@@ -72,7 +83,13 @@ const MovieContainer = ({ title, movietype }) => {
                     )
                 })}
             </Row>
-            <Button onClick={handleclick}>Show More</Button>
+
+            <div className='text-center'>
+                <AppButton
+                    onClick={handleclick}
+                    message={`${showMore ? 'Show More' : 'Show Less'}`}
+                />
+            </div>
         </>
     )
 }
