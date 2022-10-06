@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import MovieBox from './MovieBox'
 import AppButton from './AppButton';
+import LoaderSkeleton from '../loader/LoaderSkeleton';
 import axios from 'axios';
 
 const MOVIETYPE = [
@@ -19,6 +20,7 @@ const MovieContainer = ({ title, movietype }) => {
     const [moviesdata, setMoviesData] = React.useState([]);
     const [tempMovie, setTempMovie] = React.useState([]);
     const [showMore, setShowMore] = React.useState(true);
+    const [spinner, setSpinner] = React.useState(true);
 
     React.useEffect(() => {
         async function fetchData() {
@@ -39,6 +41,7 @@ const MovieContainer = ({ title, movietype }) => {
             axios.get(apiurl)
                 .then(function (response) {
                     trimMovies(response.data);
+                    setSpinner(false)
                 });
         } catch (error) {
             console.log(error)
@@ -65,7 +68,7 @@ const MovieContainer = ({ title, movietype }) => {
 
 
 
-    return (
+    return !spinner ? (
         <>
             <h4 className='mt-4'>{title}</h4>
             <Row md={8} className='g-0'>
@@ -91,7 +94,7 @@ const MovieContainer = ({ title, movietype }) => {
                 />
             </div>
         </>
-    )
+    ) : <LoaderSkeleton />;
 }
 
 export default MovieContainer
