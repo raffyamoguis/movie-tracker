@@ -8,12 +8,14 @@ import axios from 'axios';
 const MOVIETYPE = [
     "TRENDING",
     "LATESTMOVIES",
+    "TRENDINGTV",
     "LATESTTVSHOW",
     "COMINGSOON"
 ]
 
 const TrendingMoviesApiURL = 'https://myflixer-video-api.cyclic.app/trending-movies';
 const LatestMoviesApiURL = 'https://myflixer-video-api.cyclic.app/latest-movies';
+const TrendingTvShowApiURL = 'https://myflixer-video-api.cyclic.app/trending-tv';
 const LatestTvShowApiURL = 'https://myflixer-video-api.cyclic.app/latest-tv';
 
 const MovieContainer = ({ title, movietype }) => {
@@ -29,6 +31,8 @@ const MovieContainer = ({ title, movietype }) => {
             } else if (movietype.toUpperCase() === MOVIETYPE[1]) {
                 fetchMoviesData(LatestMoviesApiURL);
             } else if (movietype.toUpperCase() === MOVIETYPE[2]) {
+                fetchMoviesData(TrendingTvShowApiURL);
+            } else if (movietype.toUpperCase() === MOVIETYPE[3]) {
                 fetchMoviesData(LatestTvShowApiURL);
             }
         }

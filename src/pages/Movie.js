@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useParams, useSearchParams } from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 import axios from 'axios';
 
 import Headline from '../components/Headline'
@@ -16,7 +17,10 @@ const Movie = () => {
     const [searchParams] = useSearchParams();
     const [moviedata, setMovieData] = useState([]);
 
+    const ref = useRef(null);
+
     useEffect(() => {
+        ref.current.continuousStart();
         async function fetchData() {
             if (searchParams.get('type') === MOVIE) {
                 //fetch movie data
@@ -36,6 +40,7 @@ const Movie = () => {
             axios.get(apiurl)
                 .then(function (response) {
                     setMovieData(response.data);
+                    ref.current.complete();
                 });
         } catch (error) {
             console.log(error)
@@ -43,31 +48,34 @@ const Movie = () => {
     }
 
     return (
-        <Container>
-            <Headline text={moviedata.name} />
-            <Row className='mt-4'>
-                <Col md={2}>
-                    <Image
-                        src={moviedata.poster}
-                        rounded
-                        className='w-100'
-                    />
-                </Col>
-                <Col md={10}>
-                    <div>
-                        <Tags text='Sci-fi' />
-                        <Tags text='Horror' />
-                        <p className='w-75 mt-4'>{moviedata.plot}</p>
-                        <div><b>Release: </b>{moviedata.released}</div>
-                        <div><b>Duration: </b>{moviedata.duration}</div>
-                        <div><b>Production: </b>{moviedata.production}</div>
-                        <div><b>Cast: </b>{moviedata.casts}</div>
-                        <div><b>Country: </b>{moviedata.country}</div>
-                    </div>
-                </Col>
-            </Row>
-            <Headline text='Sources' />
-        </Container>
+        <>
+            <LoadingBar color="#faae2c" ref={ref} shadow={true} height={3} />
+            <Container>
+                <Headline text={moviedata.name} />
+                <Row className='mt-4'>
+                    <Col md={2}>
+                        <Image
+                            src={moviedata.poster}
+                            rounded
+                            className='w-100'
+                        />
+                    </Col>
+                    <Col md={10}>
+                        <div>
+                            <Tags text='Sci-fi' />
+                            <Tags text='Horror' />
+                            <p className='w-75 mt-4'>{moviedata.plot}</p>
+                            <div><b>Release: </b>{moviedata.released}</div>
+                            <div><b>Duration: </b>{moviedata.duration}</div>
+                            <div><b>Production: </b>{moviedata.production}</div>
+                            <div><b>Cast: </b>{moviedata.casts}</div>
+                            <div><b>Country: </b>{moviedata.country}</div>
+                        </div>
+                    </Col>
+                </Row>
+                <Headline text='Sources' />
+            </Container>
+        </>
     )
 }
 

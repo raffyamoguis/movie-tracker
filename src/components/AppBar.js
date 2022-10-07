@@ -4,7 +4,7 @@ import { Navbar, Container, Form, Nav, NavDropdown } from 'react-bootstrap'
 
 const AppBar = () => {
     return (
-        <Navbar className='appbar'>
+        <Navbar className='appbar p-4'>
             <Container fluid>
                 <Navbar.Brand className='appbar-brand' href="/">Movie Tracker</Navbar.Brand>
                 <Form className="d-flex w-25">
