@@ -81,6 +81,7 @@ const MovieContainer = ({ title, movietype }) => {
                                 year={moviedata.year}
                                 duration={moviedata.duration}
                                 type={moviedata.type}
+                                link={moviedata.link}
                             />
                         </Col>
                     )

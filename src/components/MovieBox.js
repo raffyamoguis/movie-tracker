@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import '../css/moviebox.css'
 import error from '../img/error-img.jpg'
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
-const MovieBox = ({ title, banner, year, duration, type }) => {
+const MovieBox = ({ title, banner, year, duration, type, link }) => {
     const [ready, setReady] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function loadImage() {
@@ -26,10 +27,14 @@ const MovieBox = ({ title, banner, year, duration, type }) => {
                 src={ready ? banner : error}
             />
             <Card.Body>
-                <OverlayTrigger overlay={<Tooltip id="tooltip">{title}</Tooltip>}>
-                    <LinkContainer to={`/movie/${title}`}>
-                        <h6 className='moviebox-title'><b>{title.substring(0, 16)}</b></h6>
-                    </LinkContainer>
+                <OverlayTrigger overlay={<Tooltip id="tooltip-title">{title}</Tooltip>}>
+                    <h6
+                        id='tooltip-title'
+                        className='moviebox-title'
+                        onClick={() => navigate(`/movie/${link}?type=${type}`)}
+                    >
+                        <b>{title.substring(0, 16)}</b>
+                    </h6>
                 </OverlayTrigger>
                 <div className='movie-info'>
                     <div>{year}</div>
@@ -37,7 +42,7 @@ const MovieBox = ({ title, banner, year, duration, type }) => {
                     <div>{type}</div>
                 </div>
             </Card.Body>
-        </Card>
+        </Card >
     )
 }
 
