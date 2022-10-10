@@ -16,6 +16,7 @@ const Movie = () => {
     const params = useParams();
     const [searchParams] = useSearchParams();
     const [moviedata, setMovieData] = useState([]);
+    const [genres, setGenre] = useState([]);
 
     const ref = useRef(null);
 
@@ -40,6 +41,7 @@ const Movie = () => {
             axios.get(apiurl)
                 .then(function (response) {
                     setMovieData(response.data);
+                    setGenre(response.data.genre.split(','));
                     ref.current.complete();
                 });
         } catch (error) {
@@ -62,14 +64,19 @@ const Movie = () => {
                     </Col>
                     <Col md={10}>
                         <div>
-                            <Tags text='Sci-fi' />
-                            <Tags text='Horror' />
+                            {genres.map((genre) => (
+                                <Tags text={genre} />
+                            ))}
+                            {/* <Tags text='Sci-fi' />
+                            <Tags text='Horror' /> */}
                             <p className='w-75 mt-4'>{moviedata.plot}</p>
+
                             <div><b>Release: </b>{moviedata.released}</div>
                             <div><b>Duration: </b>{moviedata.duration}</div>
                             <div><b>Production: </b>{moviedata.production}</div>
                             <div><b>Cast: </b>{moviedata.casts}</div>
                             <div><b>Country: </b>{moviedata.country}</div>
+                            <Tags text={moviedata.imdb} />
                         </div>
                     </Col>
                 </Row>
