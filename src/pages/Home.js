@@ -4,8 +4,8 @@ import Headline from '../components/Headline'
 import AppTabs from '../components/AppTabs'
 import MovieContent from './MovieContent'
 import TvShowContent from './TvShowContent'
-import Movie from './Movie'
 import HomeLayout from './HomeLayout'
+import GenreContent from './GenreContent'
 
 import { Routes, Route } from "react-router-dom";
 
@@ -21,7 +21,7 @@ const Home = () => {
                             <Route path="/" element={<MovieContent />} />
                             <Route path="/movies" element={<MovieContent />} />
                             <Route path="/tvshows" element={<TvShowContent />} />
-                            <Route path="/genre" element />
+                            <Route path="/genre" element={<GenreContent />} />
                             <Route path="/country" element />
                         </Route>
                     </Routes>

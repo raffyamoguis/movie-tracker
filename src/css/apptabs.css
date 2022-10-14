@@ -18,3 +18,35 @@
 .tab-link:hover {
     border: 0;
 }
+
+#nav-dropdown {
+    /* background-color: #f2f7f5 !important; */
+    color: #00473e;
+    border: 0 !important;
+}
+
+.nav-item.show {
+    background-color: #f2f7f5 !important;
+}
+
+.dropdown-menu {
+    min-width: 800px;
+    border: 0;
+}
+
+.dropdown-menu>.dropdown-item {
+    display: inline-block !important;
+}
+
+.dropdown-menu>.show>a {
+    display: inline-block;
+    float: left;
+}
+
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover {
+    background-color: #f2f7f5 !important;
+    font-weight: bold !important;
+    color: #faae2c !important;
+}
