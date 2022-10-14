@@ -5,6 +5,8 @@ import AppButton from './AppButton';
 import LoaderSkeleton from '../loader/LoaderSkeleton';
 import axios from 'axios';
 
+import { primaryBtn } from '../styles/styles'
+
 const MOVIETYPE = [
     "TRENDING",
     "LATESTMOVIES",
@@ -96,6 +98,7 @@ const MovieContainer = ({ title, movietype }) => {
                 <AppButton
                     onClick={handleclick}
                     message={`${showMore ? 'Show More' : 'Show Less'}`}
+                    buttonStyle={primaryBtn}
                 />
             </div>
         </>

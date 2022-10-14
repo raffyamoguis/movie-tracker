@@ -1,22 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Button } from 'react-bootstrap';
 
-const buttonStyle = {
-    backgroundColor: '#f2f7f5',
-    border: '1px solid #faae2c',
-    color: '#faae2c',
-}
-
-const AppButton = ({ message, onClick }) => {
+const AppButton = ({ message, onClick, buttonStyle, roundedPill }) => {
     return (
         <Button
-            className='shadow-none mt-4'
+            className={`shadow-none ${roundedPill && 'rounded-pill'}`}
             style={buttonStyle}
-            onClick={(e) => onClick()}
+            onClick={(e) => onClick(e)}
         >
             {message}
         </Button>
     )
+}
+
+AppButton.propTypes = {
+    message: PropTypes.string,
+    onClick: PropTypes.func,
+    buttonStyle: PropTypes.object,
+    roundedPill: PropTypes.bool,
+}
+
+AppButton.defaultProp = {
+    roundedPill: false,
 }
 
 export default AppButton
