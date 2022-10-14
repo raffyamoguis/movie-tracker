@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Container, Row, Col, Image } from 'react-bootstrap'
 import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingBar from 'react-top-loading-bar'
 import axios from 'axios';
 
@@ -8,7 +9,7 @@ import Headline from '../components/Headline'
 import Tags from '../components/Tags'
 import AppButton from '../components/AppButton';
 
-import { addToList } from '../styles/styles';
+import { addToList, goBackBtn } from '../styles/styles';
 
 const MOVIE = 'Movie';
 const TV = 'TV';
@@ -21,6 +22,8 @@ const Movie = () => {
     const [moviedata, setMovieData] = useState([]);
     const [genres, setGenre] = useState([]);
     const [isDataFetch, setDataFetch] = useState(false);
+
+    const navigate = useNavigate();
 
     const ref = useRef(null);
 
@@ -57,6 +60,10 @@ const Movie = () => {
 
     const addToWatchList = () => {
         console.log('Add Movie To Watch List')
+    }
+
+    const goBack = () => {
+        navigate(-1);
     }
 
     return (
@@ -97,7 +104,13 @@ const Movie = () => {
                             </div>
                         </Col>
                     </Row>
-
+                    <div className='text-center'>
+                        <AppButton
+                            message='Go Back'
+                            buttonStyle={goBackBtn}
+                            onClick={goBack}
+                        />
+                    </div>
                 </Container>
             }
         </>

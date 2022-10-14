@@ -12,3 +12,11 @@ export const addToList = {
     float: 'right',
     marginTop: '7px',
 }
+
+export const goBackBtn = {
+    backgroundColor: '#f2f7f5',
+    border: '2px solid #00473e',
+    color: '#00473e',
+    fontWeight: 'bold',
+    marginTop: '4em',
+}
