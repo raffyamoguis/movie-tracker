@@ -9,31 +9,22 @@ const AppTabs = () => {
         <>
             <Nav
                 variant="tabs"
-                defaultActiveKey="/movies"
                 className='apptabs'>
                 <LinkContainer to='/movies'>
-                    <Nav.Item className='tab-item'>
-                        <Nav.Link className='tab-link' href="/movies">MOVIES</Nav.Link>
-                    </Nav.Item>
+                    <Nav.Link className='tab-link' href="/movies">MOVIES</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/tvshows'>
-                    <Nav.Item className='tab-item'>
-                        <Nav.Link className='tab-link' href="/tvshows">TV SHOWS</Nav.Link>
-                    </Nav.Item>
+                    <Nav.Link className='tab-link' href="/tvshows">TV SHOWS</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/genre'>
-                    <Nav.Item className='tab-item'>
-                        <Nav.Link className='tab-link' href="/genre">
-                            GENRE
-                        </Nav.Link>
-                    </Nav.Item>
+                    <Nav.Link className='tab-link' href="/genre">
+                        GENRE
+                    </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/country'>
-                    <Nav.Item className='tab-item'>
-                        <Nav.Link className='tab-link' href="/country">
-                            COUNTRY
-                        </Nav.Link>
-                    </Nav.Item>
+                    <Nav.Link className='tab-link' href="/country">
+                        COUNTRY
+                    </Nav.Link>
                 </LinkContainer>
             </Nav>
             <div>

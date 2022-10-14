@@ -15,6 +15,7 @@ const MOVIE = 'Movie';
 const TV = 'TV';
 
 const getMovieDataApiURL = 'https://myflixer-video-api.cyclic.app/movie/';
+const getTvShowDataApiURL = 'https://myflixer-video-api.cyclic.app//tv/';
 
 const Movie = () => {
     const params = useParams();
@@ -36,7 +37,7 @@ const Movie = () => {
             }
             if (searchParams.get('type') === TV) {
                 //fetch tv data
-
+                fetchMoviesData(getTvShowDataApiURL + params.name);
             }
         }
 
@@ -100,7 +101,7 @@ const Movie = () => {
                                 <div><b>Production: </b>{moviedata.production}</div>
                                 <div><b>Cast: </b>{moviedata.casts}</div>
                                 <div><b>Country: </b>{moviedata.country}</div>
-                                <Tags text={moviedata.imdb} />
+                                <Tags text={moviedata.imdb} warning={true} />
                             </div>
                         </Col>
                     </Row>
