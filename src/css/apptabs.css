@@ -19,7 +19,7 @@
     border: 0;
 }
 
-#nav-dropdown {
+#nav-dropdown-menu {
     /* background-color: #f2f7f5 !important; */
     color: #00473e;
     border: 0 !important;
@@ -29,8 +29,8 @@
     background-color: #f2f7f5 !important;
 }
 
-.dropdown-menu {
-    min-width: 800px;
+div[aria-labelledby=nav-dropdown-menu] {
+    min-width: 850px;
     border: 0;
 }
 
