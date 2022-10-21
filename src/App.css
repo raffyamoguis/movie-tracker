@@ -10,3 +10,11 @@ body {
   border: 1px solid #faae2c;
   color: #faae2c;
 }
+
+* {
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
