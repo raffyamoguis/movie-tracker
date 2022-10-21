@@ -10,7 +10,10 @@ const getMovieGenreApiURL = 'https://myflixer-video-api.cyclic.app/genre/';
 const GenreContent = () => {
     const [genres, setGenres] = useState([]);
     const [genrecontent, setGenreContent] = useState([]);
-    const [selgenre, setSelGenre] = useState('action');
+    const [selgenre, setSelGenre] = useState({
+        name: 'Action',
+        src: 'action'
+    });
     const [isComplete, setComplete] = useState(false);
 
     const ref = useRef(null);
@@ -30,7 +33,7 @@ const GenreContent = () => {
         ref.current.continuousStart();
         const fetchSelGenre = async () => {
             try {
-                axios.get(`${getMovieGenreApiURL + selgenre}`)
+                axios.get(`${getMovieGenreApiURL + selgenre.src}`)
                     .then((response) => {
                         setGenreContent(response.data.data)
                         ref.current.complete();
@@ -41,7 +44,11 @@ const GenreContent = () => {
             }
         }
         fetchSelGenre();
-    }, [selgenre])
+    }, [selgenre.src])
+
+    const onGenreClick = genre => {
+        setSelGenre(genre)
+    }
 
     return (
         <>
@@ -52,7 +59,7 @@ const GenreContent = () => {
                         genres.map((genre) => (
                             <a
                                 className='btn btn-sm btn-light mt-1 me-1'
-                                onClick={e => setSelGenre(genre.src)}
+                                onClick={e => onGenreClick(genre)}
                                 href
                             >
                                 {genre.name}
@@ -62,7 +69,7 @@ const GenreContent = () => {
                 </div>
 
                 <div>
-                    <h3 className='mt-4' style={{ textTransform: 'capitalize' }}>{selgenre}</h3>
+                    <h3 className='mt-4' style={{ textTransform: 'capitalize' }}>{selgenre.name}</h3>
                     <Row md={8} className='g-0'>
                         {genrecontent.map((moviedata) => {
                             return (
