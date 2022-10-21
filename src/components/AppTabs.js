@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../css/apptabs.css'
-import { Nav, NavDropdown, Row, Col } from 'react-bootstrap'
+import { Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Outlet } from 'react-router-dom'
 import axios from 'axios';
@@ -42,27 +42,11 @@ const AppTabs = () => {
                         GENRE
                     </Nav.Link>
                 </LinkContainer>
-                {/* <LinkContainer to='/country'>
+                <LinkContainer to='/country'>
                     <Nav.Link className='tab-link' href="/country">
                         COUNTRY
                     </Nav.Link>
-                </LinkContainer> */}
-                <NavDropdown title="COUNTRY" id="nav-dropdown-menu" className='tab-link'>
-                    {/* <NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-                    <NavDropdown.Item eventKey="4.3">Something else here</NavDropdown.Item>
-                    
-                    <NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item> */}
-                    <Row className='ps-3' md={4}>
-                        {
-                            countries.map((country) => (
-                                <Col>
-                                    <NavDropdown.Item eventKey="4.2">{country.name}</NavDropdown.Item>
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                </NavDropdown>
+                </LinkContainer>
             </Nav>
             <div>
                 <Outlet />
